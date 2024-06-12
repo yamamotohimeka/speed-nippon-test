@@ -1,0 +1,240 @@
+@import "mixin";
+
+
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+
+img {
+  max-width: 100%;
+}
+
+.entrance-bg {
+  background-image: url(../img/shop-entrance/umeda-entrance-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+}
+
+.shop-entrance {
+  height: 100vh;
+  padding-top: 280px;
+  width: 1294px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 47px;
+  padding-right: 47px;
+  padding-bottom: 100px;
+
+  &__desc {
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #fd1c8b;
+    font-family: 'ヒラギノ明朝 Pro W3',
+      'Hiragino Mincho Pro',
+      '游明朝',
+      'Yu Mincho',
+      '游明朝体',
+      'YuMincho',
+      'ＭＳ Ｐ明朝',
+      'MS PMincho',
+      serif;
+
+    span {
+      margin-left: 26px;
+      margin-right: 26px;
+    }
+  }
+
+  &__heading {
+    text-align: center;
+    position: relative;
+    margin-top: 28px;
+    margin-right: 12px;
+
+    img {
+      display: inline-block;
+      width: 475px;
+      margin: 0 auto;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 66px;
+      right: 349px;
+      background-image: url(../img/shop-entrance/shop-entrance-design.png);
+      display: inline-block;
+      background-repeat: no-repeat;
+      width: 74px;
+      height: 99px;
+      background-size: contain;
+      vertical-align: middle;
+    }
+  }
+
+  &__small {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 13px;
+    line-height: 1.2;
+    color: #fd1c8b;
+    letter-spacing: -0.03em;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__btn {
+    text-align: center;
+    margin-top: 20px;
+
+    a {
+
+      // img {
+      //   width: 22%;
+      //   filter: drop-shadow(3px 3px 4px #888);
+      // }
+
+      // &:hover {
+      //   img {
+      //     filter: drop-shadow(0px 0px 2px #888);
+      //     transform: translate(1px, 1px);
+      //   }
+      // }
+      figure {
+        position: relative;
+        width: 22%;
+        filter: drop-shadow(3px 3px 4px #888);
+        margin: 0 auto;
+        display: inline-block;
+        overflow: hidden;
+      }
+
+
+      figure::before {
+        position: absolute;
+        top: 0;
+        left: -75%;
+        z-index: 2;
+        display: block;
+        content: '';
+        width: 50%;
+        height: 100%;
+        background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+        -webkit-transform: skewX(-25deg);
+        transform: skewX(-25deg);
+      }
+
+      &:hover {
+        figure {
+          filter: drop-shadow(0px 0px 2px #888);
+          transform: translate(1px, 1px);
+        }
+
+        figure::before {
+          -webkit-animation: shine .75s;
+          animation: shine .75s;
+        }
+      }
+    }
+  }
+
+  &__exit {
+    padding-top: 26px;
+    font-size: 14px;
+    color: #535353;
+    text-align: center;
+
+    a {
+      position: relative;
+      font-size: 20px;
+      color: #535353;
+      letter-spacing: -2px;
+      font-weight: 500;
+
+      &::after {
+        position: absolute;
+        content: '';
+        bottom: 2px;
+        left: 0;
+        width: 37px;
+        height: 1px;
+        background-color: #000;
+      }
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
+}
+
+.entrance-banner {
+  width: 100%;
+  background-color: rgba($color: #000000, $alpha: .8);
+  padding-bottom: 100px;
+
+  &__flex {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+
+    &:first-child {
+      padding-top: 30px;
+    }
+
+    div {
+      background-color: #fff;
+
+      &:first-child {
+        margin-right: 15px;
+      }
+
+      a:hover img {
+        opacity: 0.7;
+        filter: alpha(opacity=70);
+      }
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  &__form {
+    margin: 0 auto;
+  }
+
+  &__desc {
+    margin-bottom: 30px;
+  }
+}
+
+.entrance-footer {
+  background-color: #000;
+  text-align: center;
+  margin-top: 0;
+
+  p {
+    padding: 50px 0;
+    color: #fff;
+    font-size: 11px;
+  }
+}

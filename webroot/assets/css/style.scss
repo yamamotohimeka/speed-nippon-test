@@ -1,0 +1,563 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Noto Sans CJK JP WF";
+  font-weight: 400;
+  src: url('../fonts/NotoSansCJKJP-reg.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Rounded Mplus 2p WF";
+  font-weight: 400;
+  src: url('../fonts/rounded-l-mplus-2p_reg.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Noto Serif JP WF";
+  font-weight: 400;
+  src: url('../fonts/NotoSerifJP-reg.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Noto Serif JP WF";
+  font-weight: 800;
+  src: url('../fonts/NotoSerifJP-bold.woff') format('woff');
+}
+
+// 変数
+$c_pink: #ff3a80;
+$c_pink2: #ff2a97;
+$c_orange: #ffa400;
+
+// スタイル初期化
+html {
+  font-size: calc(100vw / 750);
+
+  @media screen and (min-width: 80em) {
+    font-size: calc(1280px / 750);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+em,
+b,
+strong,
+i {
+  font-style: normal;
+}
+
+:focus {
+  outline: 0;
+}
+
+input[type="text"],
+input[type="checkbox"],
+input[type="radio"],
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+input[type="text"],
+textarea {
+  padding: 4rem 8rem;
+}
+
+select {
+  width: 100%;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+  box-shadow: none;
+}
+
+button {
+  border: 0;
+  font-family: inherit;
+}
+
+body {
+  background-color: #666;
+  color: #fff;
+  font-family: "Noto Sans CJK JP WF";
+  font-size: 16rem
+}
+
+h3 {
+  font-weight: normal;
+}
+
+%expanded-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  font-size: 0;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+// フォーム入力系のスタイル
+.label-for-mark {
+  input[type="checkbox"] {
+    margin-right: 8rem;
+    width: 24rem;
+    height: 24rem;
+    background-color: #fff;
+
+    &:checked {
+      background: url(../img/common/checkbox.png) #fff no-repeat center / 100% auto;
+    }
+  }
+
+  input[type="radio"] {
+    margin-right: 8rem;
+    width: 24rem;
+    height: 24rem;
+    border: 12rem solid #fff;
+    border-radius: 12rem;
+    background-color: $c_pink;
+
+    &:checked {
+      border-width: 6rem;
+    }
+  }
+}
+
+.container {
+  background-color: #000;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: //repeating-linear-gradient(0deg, #4c4c4c 1%, #4c4c4c 2%, transparent 3%, transparent 100%),
+    //repeating-linear-gradient(90deg, #4c4c4c 1%, #4c4c4c 2%, transparent 3%, transparent 100%),
+    linear-gradient(45deg, #191919 25%, transparent 25%, transparent 75%, #191919 75%, #191919),
+    linear-gradient(45deg, #191919 25%, transparent 25%, transparent 75%, #191919 75%, #191919);
+  background-position: 0 0, 12px 12px;
+  background-size: 24px 24px;
+}
+
+// ヘッダー & メニュー
+.global-header {
+  position: relative;
+
+  .header-banner {
+    display: block;
+  }
+
+  %menu-rect {
+    content: "";
+    display: block;
+    width: 74rem;
+    height: 6rem;
+    background-color: #fff;
+    transition: 0.1s ease-in-out;
+  }
+
+  .navigation-button {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140rem;
+    height: 128rem;
+    background-color: $c_pink;
+    border-radius: 0 0 6rem 6rem;
+    border: 0;
+    outline: 0;
+    padding-top: 66rem;
+
+    .rect {
+      @extend %menu-rect;
+    }
+
+    &::before {
+      @extend %menu-rect;
+      position: absolute;
+      top: 30rem;
+    }
+
+    &::after {
+      @extend %menu-rect;
+      position: absolute;
+      top: 46rem;
+    }
+
+    .label {
+      margin-top: 8rem;
+      color: #fff;
+      font-size: 16rem;
+    }
+
+    &:active {
+      background-color: #e23975;
+    }
+
+    &.open {
+      .rect {
+        transform: rotate(45deg) translate(-14rem, -14rem);
+      }
+
+      &::before {
+        transform: rotate(-45deg) translate(-12rem, 12rem);
+      }
+
+      &::after {
+        opacity: 0;
+      }
+    }
+
+    &.top {
+      animation: fadeInTop 0.2s ease both;
+    }
+
+    &.bottom {
+      top: initial;
+      bottom: 32rem;
+      right: 16rem;
+      border-radius: 6rem;
+      animation: fadeInBottom 0.2s ease both;
+    }
+  }
+
+  @keyframes fadeInBottom {
+    0% {
+      opacity: 0;
+      transform: translate(100%, 100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes fadeInTop {
+    from {
+      opacity: 0;
+      transform: translate(100%, -100%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  .navigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: -2;
+    max-width: 1280px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #000;
+    border: 2rem solid $c_pink;
+    opacity: 0;
+    transition: 0.2s ease;
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20rem;
+      width: 100%;
+    }
+
+    .item {
+      width: 49%;
+      margin-bottom: 20rem;
+    }
+
+    a {
+      display: block;
+      padding: 16rem 0;
+      border: 0.5px solid #b4b4b4;
+      color: #fff;
+      font-size: 32rem;
+      text-align: center;
+      transition: 0.2s ease;
+
+      &:hover {
+        border-color: $c_pink;
+        color: $c_pink;
+      }
+    }
+  }
+
+  .navigation-button.open+.navigation {
+    z-index: 998;
+    opacity: 1;
+  }
+
+}
+
+.top_bnr {
+  margin-bottom: 10px;
+}
+
+// 予約ナビ (店舗用)
+.reserve-nav {
+  position: fixed;
+  z-index: 997;
+  right: 16rem;
+  bottom: 176rem;
+  transition: 0.2s ease;
+  transform: translateX(120%);
+
+  &-tel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 140rem;
+    height: 140rem;
+    background-color: #004aaf;
+    border-radius: 50%;
+    text-align: center;
+    overflow: hidden;
+    color: #fff;
+    font-size: 24rem;
+  }
+
+  &-icon {
+    width: auto;
+    height: 64rem;
+    margin-top: 8rem;
+    margin-bottom: 4rem;
+  }
+
+  &.show {
+    transform: translateX(0);
+  }
+}
+
+// 店舗ナビ (グループ用)
+.shop-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 997;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16rem;
+  padding-right: 156rem;
+  padding-bottom: 16rem;
+  width: 100%;
+  background-color: #212121;
+  background-image: linear-gradient(to bottom, #363636 0%, #000 100%);
+  transform: translateY(100%);
+  transition: 0.2s ease;
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  &-item {
+    width: 25%;
+    padding: 24rem 0;
+    color: #fff;
+    font-size: 28rem;
+    text-align: center;
+
+    &:not(:last-child) {
+      border-right: 1rem solid #999;
+    }
+
+    &:active {
+      background-color: #333;
+    }
+  }
+}
+
+// セクション見出し
+.section-title {
+  margin-bottom: 20rem;
+  padding-left: 32rem;
+  /* height: 100rem; */
+  background: url(../img/common/section-title.png) no-repeat center / 100% 100%;
+  font-family: "Noto Serif JP WF";
+  font-weight: 400;
+  font-size: 40rem;
+  line-height: 100rem;
+}
+
+// グラデーションボタン(ピンク)
+.button-more {
+  font-size: 32rem;
+  display: block;
+  margin-top: 10rem;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50rem;
+  width: 564rem;
+  border-radius: 16rem;
+  /* background-image: linear-gradient(0deg, #ff006b 0, #ff0079 50%, #d20064 50%, #d30048 100%); */
+  background-color: #ff3a80;
+  color: #fff;
+  line-height: 72rem;
+  text-align: center;
+}
+
+// ページネーション
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48rem;
+
+  &-item {
+    padding: 8rem 24rem;
+    font-size: 28rem;
+    border: 1rem solid $c_pink;
+    background-color: rgba(#212121, 0.6);
+    color: #fff;
+
+    &.current {
+      background-color: $c_pink;
+      color: #fff;
+    }
+
+    &.active {
+      background-color: $c_pink;
+      color: #fff;
+    }
+
+    &:not(:last-child) {
+      margin-right: 16rem;
+    }
+  }
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48rem;
+}
+
+.paging {
+  display: flex;
+  align-items: center;
+}
+
+.paging li span {
+  padding: 10px 16px;
+  font-size: 10px;
+  border: 1rem solid #ff3a80;
+  background-color: rgba(33, 33, 33, 0.6);
+  color: #fff;
+  background-color: $c_pink;
+
+  &:not(:last-child) {
+    margin-right: 16rem;
+  }
+
+  .active {
+    background-color: $c_pink;
+    color: #fff;
+  }
+}
+
+//パンくずリスト
+.bread {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 0 20rem;
+
+  a {
+    color: #ff9100;
+    margin-right: 10px;
+  }
+
+  .left-space {
+    margin-left: 10px;
+  }
+
+  .bread-current {
+    margin-left: 10px;
+  }
+}
+
+
+.footer {
+  padding-left: 20rem;
+  padding-right: 20rem;
+  padding-bottom: 128rem;
+
+  .navigation-banner {
+    margin-bottom: 96rem;
+  }
+
+  .banner-link:not(:last-of-type) {
+    display: block;
+    margin-bottom: 24rem;
+  }
+
+  .banner-image {
+    display: block;
+    width: 100%;
+  }
+}
+
+@import "top";
+@import "top-stories";
+
+@import "girls";
+@import "girl-listview";
+@import "girl-detail";
+
+@import "schedule";
+@import "realtime";
+@import "stories";
+
+@import "ranking";
+@import "system";
+
+@import "review";
+@import "events";
+@import "enquetes";
+@import "mailmagazine";
+@import "access";
+@import "jobinterview";
+@import "column";
+@import "entrance";
