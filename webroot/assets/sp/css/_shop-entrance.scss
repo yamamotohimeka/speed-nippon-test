@@ -30,12 +30,13 @@
   // background-position: 50%;
   // background-repeat: no-repeat;
   // background-attachment: fixed;
-  @include pc{
+  @include pc {
     background-color: #fff;
     //background-image: url(../img/shop-entrance/nippon-bg-sp.jpg) ;
     //background-color:rgba(255,255,255,0.8);
     //background-blend-mode:lighten;
   }
+
   &::before {
     content: "";
     display: block;
@@ -49,9 +50,10 @@
     background-position: 50% 100%;
     background-image: url(../img/shop-entrance/nippon-bg-sp.jpg);
     background-size: cover;
-    @include pc{
-      background-size: 60% auto;
-      background-position: center;
+    @include pc {
+      background-image: url(../../img/shop-entrance/nippon-entrance-bg.jpg);
+      background-size: 100% auto;
+      background-position: top;
     }
   }
 }
@@ -108,7 +110,7 @@
   width: 100%;
   height: 100vh;
   position: relative;
-  @include pc{
+  @include pc {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -117,24 +119,24 @@
   &__desc {
     width: 100%;
     position: absolute;
-    top: calc(15vw/(375/100));
+    top: calc(15vw / (375 / 100));
     left: 50%;
     transform: translateX(-50%);
-    font-size: calc(15vw/(375/100));
+    font-size: calc(15vw / (375 / 100));
     color: #fd1c8b;
     text-align: center;
-    padding: calc(0vw/(375/100)) 0;
+    padding: calc(0vw / (375 / 100)) 0;
     font-family: 'ヒラギノ明朝 Pro W3',
-      'Hiragino Mincho Pro',
-      '游明朝',
-      'Yu Mincho',
-      '游明朝体',
-      'YuMincho',
-      'ＭＳ Ｐ明朝',
-      'MS PMincho',
-      serif;
-    @include pc{
-      top: 1vw;
+    'Hiragino Mincho Pro',
+    '游明朝',
+    'Yu Mincho',
+    '游明朝体',
+    'YuMincho',
+    'ＭＳ Ｐ明朝',
+    'MS PMincho',
+    serif;
+    @include pc {
+      top: 2vw;
       font-size: 12rem;
     }
 
@@ -145,11 +147,11 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 80%;
-      height: calc(40vw/(375/100));
+      height: calc(40vw / (375 / 100));
       background-color: #fff;
       filter: blur(7px);
       z-index: -1;
-      @include pc{
+      @include pc {
         height: 2vw;
       }
     }
@@ -161,7 +163,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    @include pc{
+    @include pc {
       top: 60% !important;
     }
 
@@ -172,13 +174,13 @@
       &::after {
         content: '';
         position: absolute;
-        top: calc(61vw/(375/100));
+        top: calc(61vw / (375 / 100));
         right: 0;
         background-image: url(../img/shop-entrance/shop-entrance-design.png);
         display: inline-block;
         background-repeat: no-repeat;
-        width: calc(60vw/(375/100));
-        height: calc(90vw/(375/100));
+        width: calc(60vw / (375 / 100));
+        height: calc(90vw / (375 / 100));
         background-size: contain;
         vertical-align: middle;
 
@@ -192,9 +194,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    @include pc{
+    @include pc {
       top: 60% !important;
     }
+
     &__heading {
       margin: 0 auto;
       text-align: center;
@@ -202,16 +205,16 @@
       &::after {
         content: '';
         position: absolute;
-        top: calc(48vw/(375/100));
+        top: calc(48vw / (375 / 100));
         right: 0;
         background-image: url(../img/shop-entrance/shop-entrance-design.png);
         display: inline-block;
         background-repeat: no-repeat;
-        width: calc(60vw/(375/100));
-        height: calc(90vw/(375/100));
+        width: calc(60vw / (375 / 100));
+        height: calc(90vw / (375 / 100));
         background-size: contain;
         vertical-align: middle;
-        @include pc{
+        @include pc {
           top: 57rem;
           right: 136rem;
           width: 65rem;
@@ -227,9 +230,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    @include pc{
+    @include pc {
       top: 60% !important;
     }
+
     &__heading {
       margin: 0 auto;
       width: 95%;
@@ -238,13 +242,13 @@
       &::after {
         content: '';
         position: absolute;
-        top: calc(52vw/(375/100));
+        top: calc(52vw / (375 / 100));
         right: 0;
         background-image: url(../img/shop-entrance/shop-entrance-design.png);
         display: inline-block;
         background-repeat: no-repeat;
-        width: calc(60vw/(375/100));
-        height: calc(90vw/(375/100));
+        width: calc(60vw / (375 / 100));
+        height: calc(90vw / (375 / 100));
         background-size: contain;
         vertical-align: middle;
       }
@@ -257,9 +261,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    @include pc{
+    @include pc {
       top: 60% !important;
     }
+
     &__heading {
       margin: 0 auto;
       text-align: center;
@@ -267,13 +272,13 @@
       &::after {
         content: '';
         position: absolute;
-        top: calc(49vw/(375/100));
+        top: calc(49vw / (375 / 100));
         right: 0;
         background-image: url(../img/shop-entrance/shop-entrance-design.png);
         display: inline-block;
         background-repeat: no-repeat;
-        width: calc(60vw/(375/100));
-        height: calc(90vw/(375/100));
+        width: calc(60vw / (375 / 100));
+        height: calc(90vw / (375 / 100));
         background-size: contain;
         vertical-align: middle;
       }
@@ -281,12 +286,12 @@
   }
 
   &__small {
-    font-size: calc(10vw/(375/100));
+    font-size: calc(10vw / (375 / 100));
     color: #fd1c8b;
     text-align: center;
     display: block;
     letter-spacing: -0.02em;
-    @include pc{
+    @include pc {
       font-size: 12rem;
     }
 
@@ -300,9 +305,9 @@
     width: 50%;
     margin: 0 auto;
     text-align: center;
-    padding: calc(12vw/(375/100)) 0 calc(25vw/(375/100));
+    padding: calc(12vw / (375 / 100)) 0 calc(25vw / (375 / 100));
 
-    @include pc{
+    @include pc {
       width: 35%;
     }
 
@@ -316,40 +321,40 @@
   &__exit {
     width: 100%;
     position: absolute;
-    bottom: calc(20vw/(375/100));
+    bottom: calc(20vw / (375 / 100));
     left: 50%;
     transform: translateX(-50%);
-    font-size: calc(12vw/(375/100));
+    font-size: calc(12vw / (375 / 100));
     color: #535353;
     text-align: center;
     letter-spacing: 0.01em;
-    @include pc{
+    @include pc {
       font-size: 12rem;
     }
 
     a {
       position: relative;
-      font-size: calc(14vw/(375/100));
+      font-size: calc(14vw / (375 / 100));
       color: #535353;
       letter-spacing: -1px;
       font-weight: 500;
-      @include pc{
+      @include pc {
         font-size: 12rem;
       }
 
       &::after {
         position: absolute;
         content: '';
-        bottom: calc(2vw/(375/100));
+        bottom: calc(2vw / (375 / 100));
         left: 0;
-        width: calc(27vw/(375/100));
+        width: calc(27vw / (375 / 100));
         height: 1px;
         background-color: #000;
-        @include pc{
+        @include pc {
           bottom: 0vw;
           left: -0.2vw;
           width: 2vw;
-      }
+        }
       }
 
       &:hover {
@@ -365,11 +370,11 @@
   z-index: 10;
 
   &__box {
-    padding: calc(20vw/(375/100));
+    padding: calc(20vw / (375 / 100));
     text-align: center;
 
     div {
-      padding: calc(5vw/(375/100)) 0;
+      padding: calc(5vw / (375 / 100)) 0;
     }
   }
 
@@ -379,7 +384,7 @@
     margin-left: 20rem;
     padding: 1px;
     background-image: linear-gradient(45deg, #a96a2f 21%, #54341d 44%, #bd884d 54%, #674d25 65%);
-    @include pc{
+    @include pc {
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -388,7 +393,7 @@
   &__wrap {
     background-color: #000;
     padding: 48rem 48rem;
-    @include pc{
+    @include pc {
       padding: 20rem 40rem;
     }
 
@@ -396,7 +401,7 @@
       font-size: 22rem;
       text-align: justify;
       line-height: 1.5;
-      @include pc{
+      @include pc {
         font-size: 11rem;
       }
 
@@ -408,7 +413,7 @@
     .banner {
       dt {
         font-size: 30rem;
-        @include pc{
+        @include pc {
           font-size: 12rem;
         }
       }
@@ -419,14 +424,14 @@
     padding-top: 20px;
     padding-bottom: 10px;
     font-size: 22rem;
-    @include pc{
+    @include pc {
       font-size: 10rem;
     }
   }
 
   .tx_right {
     font-size: 22rem;
-    @include pc{
+    @include pc {
       font-size: 8rem;
     }
   }
@@ -437,7 +442,7 @@
     tr {
       display: block;
       margin-bottom: 64rem;
-      @include pc{
+      @include pc {
         margin-bottom: 24rem;
       }
     }
@@ -451,7 +456,7 @@
         margin-bottom: 8rem;
         color: #fff;
         font-size: 24rem;
-        @include pc{
+        @include pc {
           margin-bottom: 2rem;
           font-size: 10rem;
         }
@@ -466,7 +471,7 @@
         line-height: 56rem;
         padding: 4rem 16rem;
         font-size: 30rem;
-        @include pc{
+        @include pc {
           font-size: 10rem;
           line-height: 13rem;
           padding: 4rem 8rem;
@@ -487,7 +492,7 @@
       color: #fff;
       font-size: 35rem;
       line-height: 96rem;
-      @include pc{
+      @include pc {
         font-size: 10rem;
         width: 200rem;
         line-height: 30rem;
@@ -502,22 +507,24 @@
   margin-right: 20rem;
   padding-bottom: 48rem;
   margin-left: 20rem;
-  @include pc{
+  @include pc {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
   }
+
   .vanilla {
     order: 1;
+
     p {
-      text-align: left!important;
+      text-align: left !important;
     }
   }
 
   h2 {
     font-size: 30rem;
     margin: 8rem 0;
-    @include pc{
+    @include pc {
       font-size: 9rem;
     }
   }
@@ -525,6 +532,7 @@
   ul {
     display: flex;
     flex-wrap: wrap;
+
     &:nth-of-type(2) {
       order: 2;
     }
@@ -542,7 +550,7 @@
     padding: 25px 0;
     color: #fff;
     font-size: 11px;
-    @include pc{
+    @include pc {
       font-size: 12rem;
     }
   }
