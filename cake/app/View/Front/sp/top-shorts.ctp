@@ -4,7 +4,6 @@
         <ul class="top-short-list">
             <?php foreach ($printArray['Linebots'] as $key => $value) { ?>
                 <li class="top-short-link">
-
                     <?php if (!empty($value['Girl']['Image']['image'][0][1]['file'])) { ?>
                     <div class="girl-image-wrap">
                         <img src="/userImgShop/Image/<?php echo $value['Girl']['Image']['image'][0][1]['imgId']; ?>/w240.jpg?<?php echo date('YmdHis'); ?>"
@@ -23,7 +22,7 @@
                         <span class="age">(<?php echo $value['Girl']['Girl']['age']; ?>)</span>
                     </span>
                                 <span class="sizes">
-                                T<?php echo $value['Girl']['Girl']['height']; ?> B<?php echo $value['Girl']['Girl']['size_b']; ?>(<?php echo $cupArray[$value['Girl']['Girl']['size_c']]; ?>) W<?php echo $value['Girl']['Girl']['size_w']; ?> H<?php echo $value['Girl']['Girl']['size_h']; ?>
+                      T<?php echo $value['Girl']['Girl']['height']; ?> B<?php echo $value['Girl']['Girl']['size_b']; ?>(<?php echo $cupArray[$value['Girl']['Girl']['size_c']]; ?>) W<?php echo $value['Girl']['Girl']['size_w']; ?> H<?php echo $value['Girl']['Girl']['size_h']; ?>
                                 </span>
                             </div>
                         </div>
@@ -45,8 +44,8 @@
                                                 src="/userImgShop/Image/<?php echo $value['Girl']['Image']['image'][0][1]['imgId']; ?>/w151.jpg"></a>
                                 </div>
                             <?php } ?>
-                            <h3 class="name"><a
-                                        href="/profile/<?php echo $value['Girl']['Girl']['id']; ?>"><?php echo $value['Girl']['Girl']['name']; ?></a>
+                            <h3 class="name">
+                                <a href="/profile/<?php echo $value['Girl']['Girl']['id']; ?>"><?php echo $value['Girl']['Girl']['name']; ?></a>
                             </h3>
                             <div class="top-short-attendance">
                                 <span class="top-short-attendance-status"><?php echo $value['Girl']['ScheduleStatus']['status']; ?></span>
@@ -73,12 +72,12 @@
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <script>
         // TOPPAGE short MODAL WINDOW
-        const modal = document.getElementById('modalShort'),
+        const modalWindow = document.getElementById('modalShort'),
             links = document.getElementsByClassName('top-short-link'),
-            close = document.getElementsByClassName('short-close');
-        sound = document.getElementsByClassName('short-sound');
+            close = document.getElementsByClassName('short-close'),
+            sound = document.getElementsByClassName('short-sound');
 
-        let short = new Swiper('.short-swiper', {
+        const short = new Swiper('.short-swiper', {
             direction: 'vertical',
             resistance: true,
             resistanceRatio: 0,
@@ -92,19 +91,18 @@
 
         short.autoplay.stop();
 
-        var currentMovie = $(".swiper-slide-active video");
-        var storyMovie = $(".swiper-slide video");
+        let currentMovie = $(".swiper-slide-active video");
+        let storyMovie = $(".swiper-slide video");
 
         for (let i = 0; i < links.length; i++) {
-            links[i].addEventListener('click', () => {
-                modal.classList.add('active');
+            links[i].addEventListener('click', (event) => {
+                console.log('Link clicked:', i);
+                modalWindow.classList.add('active');
                 currentMovie.prop('muted', false);
                 short.update();
                 short.slideTo(i, 0);
                 short.autoplay.start();
-                document.addEventListener('touchmove', handleTouchmove, {
-                    passive: false
-                });
+                document.addEventListener('touchmove', handleTouchmove, {passive: false});
             });
         }
 
@@ -112,46 +110,14 @@
         $('.add-sound').before('<div class="short-sound">サウンド</div>');
         for (let i = 0; i < sound.length; i++) {
             sound[i].addEventListener('click', () => {
-                var video = $("video").get(i);
-                if (video.muted) {
-                    video.muted = false;
-                    $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-on.png) no-repeat center/72rem auto');
-                } else {
-                    video.muted = true;
-                    $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-off.png) no-repeat center/72rem auto');
-                }
-                short.on("slideNextTransitionStart", () => {
-                    if (video.muted) {
-                    } else {
-                        video.muted = true;
-                        $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-off.png) no-repeat center/72rem auto');
-                    }
-                    video.currentTime = 0;
-                });
-                short.on("slidePrevTransitionStart", () => {
-                    if (video.muted) {
-                    } else {
-                        video.muted = true;
-                        $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-off.png) no-repeat center/72rem auto');
-                    }
-                    video.currentTime = 0;
-                });
-                $(close).on("click", function () {
-                    if (video.muted) {
-                    } else {
-                        video.muted = true;
-                        $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-off.png) no-repeat center/72rem auto');
-                    }
-                    video = 0;
-                });
+                let video = $("video").get(i);
+                toggleMute(video);
+                short.on("slideNextTransitionStart", () => resetVideo(video));
+                short.on("slidePrevTransitionStart", () => resetVideo(video));
+                $(close).on("click", () => resetVideo(video));
                 window.addEventListener('touchmove', () => {
                     if (short.isEnd && short.touches.diff < -96) {
-                        if (video.muted) {
-                        } else {
-                            video.muted = true;
-                            $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-off.png) no-repeat center/72rem auto');
-                        }
-                        video = 0;
+                        resetVideo(video);
                     }
                 });
             });
@@ -161,9 +127,7 @@
             window.addEventListener('touchmove', () => {
                 if (short.isEnd && short.touches.diff < -96) {
                     modalClose();
-                    document.removeEventListener('touchmove', handleTouchmove, {
-                        passive: false
-                    });
+                    document.removeEventListener('touchmove', handleTouchmove, {passive: false});
                 }
             });
         });
@@ -171,19 +135,37 @@
         for (let i = 0; i < close.length; i++) {
             close[i].addEventListener('click', () => {
                 modalClose(i);
-                document.removeEventListener('touchmove', handleTouchmove, {
-                    passive: false
-                });
+                document.removeEventListener('touchmove', handleTouchmove, {passive: false});
             });
         }
 
         function modalClose(index) {
-            modal.classList.remove('active');
+            modalWindow.classList.remove('active');
             short.autoplay.stop();
         }
 
         function handleTouchmove(e) {
             e.preventDefault();
         }
+
+        function toggleMute(video) {
+            if (video.muted) {
+                video.muted = false;
+                $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-on.png) no-repeat center/72rem auto');
+            } else {
+                video.muted = true;
+                $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-off.png) no-repeat center/72rem auto');
+            }
+        }
+
+        function resetVideo(video) {
+            if (!video.muted) {
+                video.muted = true;
+                $('.short-sound').css('background', 'url(../assets/sp/img/common/sound-off.png) no-repeat center/72rem auto');
+            }
+            video.currentTime = 0;
+        }
     </script>
+
+
 <?php } ?>

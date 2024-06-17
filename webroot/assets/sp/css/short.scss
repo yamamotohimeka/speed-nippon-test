@@ -4,14 +4,7 @@
   background-color: #000;
 
   &-title {
-    padding: 16rem 0 16rem 32rem;
-    color: #ffa400;
-    font-size: 34rem;
-    @include pc {
-      max-width: $breakpoint-pc;
-      margin: 0 auto;
-      font-size: 16rem;
-    }
+    display: none;
   }
 
   &.fixed {

@@ -14,7 +14,6 @@
                     <span class="top-stories-name"><?php echo $value['Girl']['Girl']['name']; ?></span>
                 </li>
             <?php } ?>
-
         </ul>
     </section>
 
