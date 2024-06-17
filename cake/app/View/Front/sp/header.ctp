@@ -5,11 +5,11 @@
         <div class="global-header-meta-inner">
             <a href="/top/">
                 <img alt="大阪 風俗 ホテルヘルス(ホテヘル) <?php echo SITE_NAME; ?> Top （難波 日本橋 京橋 梅田）"
-                     src="/assets/sp/img/common/header_logo-nippon.png">
+                     src="/assets/sp/img/top/nippon/header_logo.png">
             </a>
             <div class="global-header-meta-inner-box">
                 <img alt="大阪 風俗 ホテルヘルス(ホテヘル) <?php echo SITE_NAME; ?> Top （難波 日本橋 京橋 梅田）"
-                     src="/assets/sp/img/common/header_meta.png">
+                     src="/assets/sp/img/top/nippon/header_meta.png">
             </div>
         </div>
     </div>
