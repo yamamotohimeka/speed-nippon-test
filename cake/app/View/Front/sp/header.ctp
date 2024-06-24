@@ -1,5 +1,5 @@
 <header class="global-header">
-
+    <h1 hidden><?php echo SITE_NAME; ?></h1>
 
     <div class="global-header-meta">
         <div class="global-header-meta-inner">

@@ -166,7 +166,6 @@
         font-size: 10rem;
         max-width: 23.8%;
         padding: 6rem 16rem 10rem;
-
       }
 
       &::after {
@@ -203,7 +202,6 @@
   .filter {
     border-top-color: transparent;
     @include pc {
-
       border-top-color: $c_pink;
     }
 
