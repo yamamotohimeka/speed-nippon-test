@@ -6,6 +6,7 @@
         <span>›</span>
         <li class="bread-current">メールマガジン</li>
     </ol>
+    <h2 class="section-title">メールマガジン</h2>
     <ul class="sub-menu">
         <li class="item"><a href="/schedule/" class="nav-link">出勤情報</a></li>
         <li class="item"><a href="/realtime/" class="nav-link">待ち時間情報</a></li>

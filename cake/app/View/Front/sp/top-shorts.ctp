@@ -39,26 +39,24 @@
                 <?php foreach ($printArray['Linebots'] as $key => $value) { ?>
                     <div class="swiper-slide">
                         <header class="top-short-info">
-                            <?php if (!empty($value['Girl']['Image']['image'][0][1]['file'])) { ?>
-                                <div class="icon"><a href="/profile/<?php echo $value['Girl']['Girl']['id']; ?>"><img
-                                                src="/userImgShop/Image/<?php echo $value['Girl']['Image']['image'][0][1]['imgId']; ?>/w151.jpg"></a>
+                            <div class="top-short-meta">
+                                <div class="top-short-icon">
+                                    <img src="/userImgShop/Image/<?php echo $value['Girl']['Image']['image'][0][1]['imgId']; ?>/w151.jpg"
+                                         class="top-short-iconimage">
                                 </div>
-                            <?php } ?>
-                            <h3 class="name">
-                                <a href="/profile/<?php echo $value['Girl']['Girl']['id']; ?>"><?php echo $value['Girl']['Girl']['name']; ?></a>
-                            </h3>
-                            <div class="top-short-attendance">
-                                <span class="top-short-attendance-status"><?php echo $value['Girl']['ScheduleStatus']['status']; ?></span>
-                                <?php if (!empty($value['Girl']['ScheduleStatus']['time'])) { ?>
-                                    <time class="top-short-attendance-time"><?php echo $value['Girl']['ScheduleStatus']['time']; ?></time><?php } ?>
+                                <div class="top-short-desc">
+                    <span class="top-short-name">
+                        <?php echo $value['Girl']['Girl']['name']; ?>
+                        <span class="age">(<?php echo $value['Girl']['Girl']['age']; ?>)</span>
+                    </span>
+                                    <span class="sizes">
+                      T<?php echo $value['Girl']['Girl']['height']; ?> B<?php echo $value['Girl']['Girl']['size_b']; ?>(<?php echo $cupArray[$value['Girl']['Girl']['size_c']]; ?>) W<?php echo $value['Girl']['Girl']['size_w']; ?> H<?php echo $value['Girl']['Girl']['size_h']; ?>
+                                </span>
+                                </div>
                             </div>
-                            <a href="/profile/<?php echo $value['Girl']['Girl']['id']; ?>#personal-story"
-                               class="short-text">
-                                <?php echo $value['Linebots']['text']; ?>
-                            </a>
                         </header>
                         <div class="short-close">閉じる</div>
-                        <figure class="image-wrap">
+                        <figure class="movie-wrap">
                             <?php echo str_replace('controls', '', $value['Linebots']['file']['tag']); ?>
                         </figure>
                     </div>
@@ -73,11 +71,11 @@
     <script>
         // TOPPAGE short MODAL WINDOW
         const modalWindow = document.getElementById('modalShort'),
-            links = document.getElementsByClassName('top-short-link'),
-            close = document.getElementsByClassName('short-close'),
-            sound = document.getElementsByClassName('short-sound');
+            shortLinks = document.getElementsByClassName('top-short-link'),
+            closeButtons = document.getElementsByClassName('short-close'),
+            soundButtons = document.getElementsByClassName('short-sound');
 
-        const short = new Swiper('.short-swiper', {
+        const shortSwiper = new Swiper('.short-swiper', {
             direction: 'vertical',
             resistance: true,
             resistanceRatio: 0,
@@ -89,51 +87,52 @@
             loop: false,
         });
 
-        short.autoplay.stop();
+        shortSwiper.autoplay.stop();
 
-        let currentMovie = $(".swiper-slide-active video");
-        let storyMovie = $(".swiper-slide video");
+        let currentMovieVideo = $(".swiper-slide-active video");
+        let storyMovieVideo = $(".swiper-slide video");
 
-        for (let i = 0; i < links.length; i++) {
-            links[i].addEventListener('click', (event) => {
+        for (let i = 0; i < shortLinks.length; i++) {
+            shortLinks[i].addEventListener('click', (event) => {
+                event.preventDefault(); // デフォルトのリンク動作を防止
                 console.log('Link clicked:', i);
                 modalWindow.classList.add('active');
-                currentMovie.prop('muted', false);
-                short.update();
-                short.slideTo(i, 0);
-                short.autoplay.start();
+                currentMovieVideo.prop('muted', false);
+                shortSwiper.update();
+                shortSwiper.slideTo(i, 0);
+                shortSwiper.autoplay.start();
                 document.addEventListener('touchmove', handleTouchmove, {passive: false});
             });
         }
 
-        $(".image-wrap video").parent('figure').addClass('add-sound');
+        $(".movie-wrap video").parent('figure').addClass('add-sound');
         $('.add-sound').before('<div class="short-sound">サウンド</div>');
-        for (let i = 0; i < sound.length; i++) {
-            sound[i].addEventListener('click', () => {
+        for (let i = 0; i < soundButtons.length; i++) {
+            soundButtons[i].addEventListener('click', () => {
                 let video = $("video").get(i);
                 toggleMute(video);
-                short.on("slideNextTransitionStart", () => resetVideo(video));
-                short.on("slidePrevTransitionStart", () => resetVideo(video));
-                $(close).on("click", () => resetVideo(video));
+                shortSwiper.on("slideNextTransitionStart", () => resetVideo(video));
+                shortSwiper.on("slidePrevTransitionStart", () => resetVideo(video));
+                $(closeButtons).on("click", () => resetVideo(video));
                 window.addEventListener('touchmove', () => {
-                    if (short.isEnd && short.touches.diff < -96) {
+                    if (shortSwiper.isEnd && shortSwiper.touches.diff < -96) {
                         resetVideo(video);
                     }
                 });
             });
         }
 
-        short.on('slideChange', () => {
+        shortSwiper.on('slideChange', () => {
             window.addEventListener('touchmove', () => {
-                if (short.isEnd && short.touches.diff < -96) {
+                if (shortSwiper.isEnd && shortSwiper.touches.diff < -96) {
                     modalClose();
                     document.removeEventListener('touchmove', handleTouchmove, {passive: false});
                 }
             });
         });
 
-        for (let i = 0; i < close.length; i++) {
-            close[i].addEventListener('click', () => {
+        for (let i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].addEventListener('click', () => {
                 modalClose(i);
                 document.removeEventListener('touchmove', handleTouchmove, {passive: false});
             });
@@ -141,7 +140,7 @@
 
         function modalClose(index) {
             modalWindow.classList.remove('active');
-            short.autoplay.stop();
+            shortSwiper.autoplay.stop();
         }
 
         function handleTouchmove(e) {

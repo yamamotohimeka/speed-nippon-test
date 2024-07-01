@@ -1,6 +1,5 @@
 <header class="global-header">
     <h1 hidden><?php echo SITE_NAME; ?></h1>
-
     <div class="global-header-meta">
         <div class="global-header-meta-inner">
             <a href="/top/">
@@ -9,10 +8,13 @@
             </a>
             <div class="global-header-meta-inner-box">
                 <img alt="大阪 風俗 ホテルヘルス(ホテヘル) <?php echo SITE_NAME; ?> Top （難波 日本橋 京橋 梅田）"
-                     src="/assets/sp/img/top/nippon/header_meta.png">
+                     src="/assets/sp/img/top/group/header_meta.png">
+                <img alt="大阪 風俗 ホテルヘルス(ホテヘル) <?php echo SITE_NAME; ?> Top （難波 日本橋 京橋 梅田）"
+                     src="/assets/sp/img/top/nippon/header_tel.png">
             </div>
         </div>
     </div>
+
     <button class="navigation-button">
         <span class="rect"></span>
         <span class="label">MENU</span>
@@ -42,7 +44,6 @@
             <li class="item"><a href="/enquetes/">アンケート</a></li>
             <li class="item"><a href="https://mypage.speed-speed.com/" target="_blank">マイページ</a></li>
             <li class="item"><a href="http://speed-recruit.net/">女の子求人情報</a></li>
-            <li class="item"></li>
             <li class="item"><a href="/mailmagazine/">メールマガジン</a></li>
 
         </ul>
@@ -86,8 +87,6 @@
         </ul>
     </nav>
 </header>
-
-
 <div class="reserve-nav bottom-nav">
     <a href="tel:<?php echo SHOP_TEL; ?>" class="reserve-nav-tel"><img src="/assets/sp/img/common/icon-tel.png"
                                                                        alt="電話アイコン" class="reserve-nav-icon">TEL</a>

@@ -5,9 +5,6 @@
 
   &-title {
     display: none;
-    @include pc {
-      display: none;
-    }
   }
 
   &.fixed {

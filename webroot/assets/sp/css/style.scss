@@ -174,15 +174,10 @@ h3 {
   max-width: 1280px;
   margin-right: auto;
   margin-left: auto;
-  background-image: //repeating-linear-gradient(0deg, #4c4c4c 1%, #4c4c4c 2%, transparent 3%, transparent 100%),
-          //repeating-linear-gradient(90deg, #4c4c4c 1%, #4c4c4c 2%, transparent 3%, transparent 100%),
-          linear-gradient(45deg, #191919 25%, transparent 25%, transparent 75%, #191919 75%, #191919),
-          linear-gradient(45deg, #191919 25%, transparent 25%, transparent 75%, #191919 75%, #191919);
   background-position: 0 0, 12px 12px;
   background-size: 24px 24px;
   @include pc {
     max-width: 100%;
-    background-image: none;
   }
 }
 
@@ -196,9 +191,9 @@ h3 {
     &-inner {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: flex-start;
-      padding: 5rem 153rem 5rem 0;
+      padding: 5rem 153rem 5rem 5rem;
       font-size: 18rem;
       @include pc {
         flex-direction: row;
@@ -214,9 +209,20 @@ h3 {
       &-box {
         width: 80%;
         @include pc {
-          width: 100%;
-          text-align: right;
-          line-height: 1.2;
+          width: auto;
+          display: flex;
+          flex-direction: column;
+        }
+
+        img {
+          padding: 0 !important;
+
+          &:nth-child(2) {
+            display: none;
+            @include pc {
+              display: block;
+            }
+          }
         }
       }
 
@@ -238,7 +244,7 @@ h3 {
       }
 
       img {
-        width: 500rem;
+        width: 400rem;
         padding: 10rem 0;
         @include pc {
           width: 152rem;
