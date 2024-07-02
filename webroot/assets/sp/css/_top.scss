@@ -5,11 +5,6 @@
 
   @include pc {
     text-align: center;
-    max-width: 1200px;
-    img {
-      width: 100%;
-      max-width: $breakpoint-pc;
-    }
 
     .swiper-slide-next {
       opacity: 0.4;
@@ -20,17 +15,6 @@
 
   }
 
-  .swiper-slide {
-    @include pc {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      max-width: 1200px;
-      text-align: center;
-      margin: 0 auto;
-    }
-  }
-
   .swiper-dots {
     padding-top: 32rem;
     padding-bottom: 40rem;
@@ -38,13 +22,6 @@
       padding-top: 10rem;
       padding-bottom: 20rem;
     }
-  }
-
-  &-image {
-    display: block;
-    width: 100%;
-    height: auto;
-
   }
 
   &-shopinfo {
@@ -59,9 +36,13 @@
     box-shadow: inset 0 4rem 8rem rgba(#000, 0.2);
     @include pc {
       font-size: 10rem;
+      display: block;
+      margin: 0 auto;
+      width: 650px;
     }
   }
 }
+
 
 // 最新情報
 .top-news {

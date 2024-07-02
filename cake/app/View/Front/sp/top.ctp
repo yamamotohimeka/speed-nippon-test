@@ -57,12 +57,6 @@
                 spaceBetween: 0,
                 loop: true,
                 autoHeight: false,
-                breakpoints: {
-                    1200: {
-                        slidesPerView: 1.8,
-                        spaceBetween: 20,
-                    }
-                }
             });
         </script>
 
