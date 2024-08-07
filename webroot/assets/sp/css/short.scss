@@ -4,6 +4,24 @@
   background-color: #000;
   margin-bottom: 80rem;
 
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    will-change: transform;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+
+  }
+
   &-title {
     display: none;
   }
@@ -57,6 +75,8 @@
     -webkit-overflow-scrolling: touch;
     text-align: center;
     transition: padding 0.3s ease;
+    gap: 40rem;
+
 
     @include pc {
       padding: 10rem 23rem;
@@ -78,13 +98,9 @@
   }
 
   &-link {
-    margin-right: 48rem;
     display: flex;
     flex-direction: column;
     position: relative;
-    @include pc {
-      margin-right: 35rem;
-    }
 
     &::before {
       content: "";
@@ -94,18 +110,36 @@
       left: 50%;
       transform: translate(-50%, -50%);
       background: url(../img/common/play-btn.png) no-repeat;
-      background-size: 90px;
-      width: 90px;
-      height: 90px;
+      background-size: 30px;
+      width: 30px;
+      height: 30px;
+      z-index: 1;
+      @include pc {
+        width: 90px;
+        height: 90px;
+        background-size: 90px;
+      }
     }
 
     .girl-image-wrap {
-      width: 200rem;
+      width: 400rem;
+      position: relative;
+      height: auto;
+      @include pc {
+        width: 200rem;
+      }
+
 
       img {
         width: 100%;
         height: auto;
         border-radius: 21px;
+      }
+
+      video {
+        border-radius: 21px;
+        //border-bottom-left-radius: 21px;
+        //border-bottom-right-radius: 21px;
       }
     }
   }
@@ -118,9 +152,9 @@
 
   &-icon {
     margin-bottom: 8rem;
-    padding: 4rem;
-    width: 128rem;
-    height: 128rem;
+    padding: 2rem;
+    width: 100rem;
+    height: 100rem;
     border-radius: 50%;
     background-color: #fff;
     //background-image: linear-gradient(to right, #ea5902 0%, #d5000f 69%, #d40077 100%);
@@ -136,41 +170,49 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 5rem solid #333;
+    border: 2rem solid #333;
     object-fit: cover;
-    @include pc {
-      border: 2rem solid #333;
-    }
   }
 
   &-meta {
     display: flex;
-    gap: 20px;
+    gap: 5px;
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     left: 0;
-    padding: 5px;
+    //padding: 5px;
     width: 100%;
     background: rgba(255, 0, 108, 0.7);
     border-bottom-left-radius: 21px;
     border-bottom-right-radius: 21px;
+    @include pc {
+      gap: 0;
+      bottom: 0;
+      padding: 0;
+    }
   }
 
   &-desc {
     display: flex;
     flex-direction: column;
-    font-size: 18px;
-  }
+    font-size: 14px;
+    @include pc {
+      font-size: 18px;
 
+    }
+  }
   &-name {
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 24px;
     white-space: nowrap;
+    font-size: 14px;
+    @include pc {
+      font-size: 24px;
+    }
   }
 
-  // モーダル表示
+
   &-modal {
     display: none;
     position: fixed;
@@ -193,16 +235,44 @@
       transform: translateY(0);
     }
 
+    .slide-wrap {
+      position: relative;
+    }
+
     .swiper-container {
       width: 100%;
       height: 100%;
+      background: #000;
+
+      /* スライドのスタイル */
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        @include pc {
+          gap: 10px;
+        }
+
+        /* スライド内の要素の配置 */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
     }
   }
 
   // モーダル・情報
   &-info {
-
-
     .shop {
       margin-left: 1em;
       color: #fff;
@@ -240,13 +310,21 @@
 }
 
 .top-short-modal {
+  figure {
+    position: relative;
+  }
 
   .top-short-meta {
-    max-width: 700px;
-    width: 100%;
-    bottom: 0;
+    max-width: 500px;
+    width: 95%;
+    bottom: -48px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 10;
+    @include pc {
+      bottom: -103px;
+      width: 100%;
+    }
   }
 
   .short-close {
@@ -292,20 +370,21 @@
     height: 100%;
     background-color: #000;
     overflow: hidden;
-
-
-    img, video {
-      width: 700px;
-      height: 100vh;
-      object-fit: contain;
-      border-radius: 21px;
-      @include pc {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
+    padding: 20rem;
+    @include pc {
+      padding: 0;
     }
 
-
+    video {
+      max-width: 500px;
+      width: 100%;
+      object-fit: contain;
+      border-top-left-radius: 21px;
+      border-top-right-radius: 21px;
+      margin: 0 auto;
+      z-index: 0;
+      display: block;
+    }
   }
 
   // アクティブ時のエフェクト
@@ -316,7 +395,6 @@
 
     .top-short-info {
       opacity: 1;
-
     }
   }
 }

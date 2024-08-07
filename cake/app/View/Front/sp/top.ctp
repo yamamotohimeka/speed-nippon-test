@@ -561,3 +561,7 @@
         });
     </script>
 </section>
+
+<?php if (!empty($printArray['Linebots'])) { ?>
+    <?php echo $this->element('../Front/sp/top-shorts'); ?>
+<?php } ?>
